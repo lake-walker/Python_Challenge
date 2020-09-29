@@ -6,7 +6,7 @@ import csv
 
 # Create variables
 
-net_profloss = ""
+total_months = []
 average_profloss = ""
 greatest_increase = ""
 greatest_decrease = ""
@@ -18,13 +18,25 @@ decrease_date = ""
 
 budget_data = os.path.join("Resources", "budget_data.csv")
 
-# Total number of months 
-total_months = []
-with open(budget_data) as csvfile:
-    reader = csv.reader(csvfile)
-    csv_header = next(reader)
+
+# Open the csv file and store the header 
+
+with open(budget_data, "r") as csvfile:
+    reader = csv.reader(csvfile, delimiter = ',')
+    next(reader)
+    # Total number of months
     total_months = len(list(reader))
-print(f"Total months: {total_months}")
+    print(f"Total months: {total_months}")
+# Net total profit/loss
+with open(budget_data, "r") as csvfile:
+    reader = csv.reader(csvfile, delimiter = ',')
+    next(reader)
+    net_profloss = sum([int(row[1]) for row in reader])
+    print(f"Total: ${net_profloss}")
+
+
+
+
 
 
 
