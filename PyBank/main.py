@@ -80,18 +80,20 @@ with open(budget_data, "r") as csvfile:
     print(f'Greatest Increase in Profits: {gain_date} (${profit_gain})')
     print(f'Greatest Decrease in Profits: {loss_date} (${profit_loss})')
     
+# write a new file and save the results within
 
-    # find the greatest increase and decrease in profits
 
-    #loss_date = str(date[proffloss.index(profit_loss)])
-    
-    #for row in reader:
-        #if row[1] == float(profit_loss):
-            #print(row[0])
-        #else:
-           # print('your doing it wrong, dumbass')
+financial_analysis = os.path.join("Analysis", "Financial_Analysis.txt")
 
-           # break
+with open(financial_analysis, 'w') as writer:
+    print('Financial Analysis', file=writer)
+    print('---------------------', file=writer)
+    print(f"Total months: {total_months}", file=writer)
+    print(f"Total: ${net_profloss}", file= writer)
+    print(f"Average Profit/Loss: ${round(average_profloss, 2)}", file=writer)
+    print(f'Greatest Increase in Profits: {gain_date} (${profit_gain})', file= writer)
+    print(f'Greatest Decrease in Profits: {loss_date} (${profit_loss})', file=writer)
+
     
 
 
