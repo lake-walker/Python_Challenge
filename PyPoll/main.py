@@ -97,3 +97,16 @@ print(f'Khan: {khan_percent}% ({khan_total})')
 print(f'Correy: {correy_percent}% ({correy_total})')
 print(f'Li: {li_percent}% ({li_total})')
 print(f"O'Tooley: {tooley_percent}% ({tooley_total})")
+print('--------------------')
+
+
+if khan_percent > 50:
+    print('Winner: Khan')
+elif correy_percent > 50:
+    print('Winner: Correy')
+elif li_percent > 50:
+    print('Winner: Li')
+elif tooley_percent > 50:
+    print("Winner: O'Tooley")
+
+print('--------------------')
