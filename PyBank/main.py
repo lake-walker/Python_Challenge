@@ -7,7 +7,7 @@ import csv
 # Create variables
 
 total_months = []
-average_profloss = ""
+# average_profloss = ""
 greatest_increase = ""
 greatest_decrease = ""
 increase_date = ""
@@ -40,14 +40,27 @@ with open(budget_data, "r") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     next(reader)
 
-    diff_proffloss = 0
-    i = 0
+    # create lists for values to be stored in. One for the profit/loss column and one for the difference
+    diff_proffloss = []
+    proffloss = []
 
+    # append column list to contain all the original values
     for row in reader:
-       i += 1
-       diff_proffloss = (float(row[i]) - float(row[i - 1])) 
+        proffloss.append(float(row[1]))
     
-    print(diff_proffloss)
+
+    # append the difference list to contain new values
+    for i in range(1 ,len(proffloss)):
+       diff_proffloss.append(float(proffloss[i]) - float(proffloss[i - 1])) 
+    
+
+    # calculate the average for the profit/loss
+    average_profloss = sum(diff_proffloss) / len(diff_proffloss)
+
+    # print and round result to the nearest two decimal places
+    print(f"Average Profit/Loss: ${round(average_profloss, 2)}")
+
+
 
 
     
