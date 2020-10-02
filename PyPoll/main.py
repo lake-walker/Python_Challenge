@@ -8,8 +8,7 @@ import csv
 
 election_data = os.path.join('Resources','election_data.csv')
 
-print('Election Results')
-print('--------------------')
+
 
 # open file and store header
 with open(election_data, 'r') as csvfile:
@@ -18,8 +17,7 @@ with open(election_data, 'r') as csvfile:
 
     #total number of votes
     total_votes = len(list(reader))
-    print(f'Total Votes: {total_votes}')
-    print('--------------------')
+    
 
 # Khan votes
 with open(election_data, 'r') as csvfile:
@@ -32,7 +30,7 @@ with open(election_data, 'r') as csvfile:
             khan_votes.append(row[0])
     
     khan_total = len(khan_votes)
-    print(f'Khan: {khan_total} votes')
+    
 
 # Correy votes
 with open(election_data, 'r') as csvfile:
@@ -45,7 +43,7 @@ with open(election_data, 'r') as csvfile:
             correy_votes.append(row[0])
     
     correy_total = len(correy_votes)
-    print(f'Correy: {correy_total} votes')
+    
 
 # Li votes
 with open(election_data, 'r') as csvfile:
@@ -58,7 +56,7 @@ with open(election_data, 'r') as csvfile:
             li_votes.append(row[0])
     
     li_total = len(li_votes)
-    print(f'Khan: {li_total} votes')
+    
 
 # O'Tooley votes
 with open(election_data, 'r') as csvfile:
@@ -71,5 +69,31 @@ with open(election_data, 'r') as csvfile:
             tooley_votes.append(row[0])
     
     tooley_total = len(tooley_votes)
-    print(f'Khan: {tooley_total} votes')
+    
 
+# find percentages
+with open(election_data, 'r') as csvfile:
+    reader = csv.reader(csvfile, delimiter = ',')
+    next(reader)
+
+    khan_percent = round((khan_total / total_votes) * 100, 3)
+    correy_percent = round((correy_total / total_votes) * 100, 3)
+    li_percent = round((li_total / total_votes) * 100, 3)
+    tooley_percent = round((tooley_total / total_votes) * 100, 3)
+
+
+
+    #print(khan_percent)
+    #print(correy_percent)
+    #print(li_percent)
+    #print(tooley_percent)
+
+#print statement 
+print('Election Results')
+print('--------------------')
+print(f'Total Votes: {total_votes}')
+print('--------------------')
+print(f'Khan: {khan_percent}% ({khan_total})')
+print(f'Correy: {correy_percent}% ({correy_total})')
+print(f'Li: {li_percent}% ({li_total})')
+print(f"O'Tooley: {tooley_percent}% ({tooley_total})")
