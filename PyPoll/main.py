@@ -6,7 +6,10 @@ import csv
 
 #create the path
 
-election_data = os.path.join('Resources'/'election_data.csv')
+election_data = os.path.join('Resources','election_data.csv')
+
+print('Election Results')
+print('--------------------')
 
 # open file and store header
 with open(election_data, 'r') as csvfile:
@@ -14,4 +17,9 @@ with open(election_data, 'r') as csvfile:
     next(reader)
 
     #total number of votes
+    total_votes = len(list(reader))
+    print(f'Total Votes: {total_votes}')
+    print('--------------------')
+
     
+
