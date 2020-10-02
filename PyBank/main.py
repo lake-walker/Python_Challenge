@@ -8,10 +8,10 @@ import csv
 
 total_months = []
 # average_profloss = ""
-greatest_increase = ""
-greatest_decrease = ""
-increase_date = ""
-decrease_date = ""
+# greatest_increase = ""
+# greatest_decrease = ""
+# increase_date = ""
+# decrease_date = ""
 
 
 # Create the path
@@ -43,10 +43,12 @@ with open(budget_data, "r") as csvfile:
     # create lists for values to be stored in. One for the profit/loss column and one for the difference
     diff_proffloss = []
     proffloss = []
+    loss_date = []
 
     # append column list to contain all the original values
     for row in reader:
         proffloss.append(float(row[1]))
+        loss_date.append(row[0])
     
 
     # append the difference list to contain new values
@@ -60,6 +62,16 @@ with open(budget_data, "r") as csvfile:
     # print and round result to the nearest two decimal places
     print(f"Average Profit/Loss: ${round(average_profloss, 2)}")
 
+    # find the greatest increase and decrease in profits
+    profit_loss = min(diff_proffloss)
+    profit_gain = max(diff_proffloss)
+
+    # loss_date = []
+    for col in reader:
+        if float(col[1]) == profit_loss:
+            loss_date.append(str(col[0]))
+    
+    print(loss_date)
 
 
 
