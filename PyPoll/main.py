@@ -21,5 +21,16 @@ with open(election_data, 'r') as csvfile:
     print(f'Total Votes: {total_votes}')
     print('--------------------')
 
+with open(election_data, 'r') as csvfile:
+    reader = csv.reader(csvfile, delimiter = ',')
+    next(reader)
+    khan_votes = []
+
+    for row in reader:
+        if row[2] == 'Khan':
+            khan_votes.append(row[0])
     
+    khan_total = len(khan_votes)
+    print(f'Khan: {khan_total} votes')
+
 
