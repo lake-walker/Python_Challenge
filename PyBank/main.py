@@ -7,12 +7,6 @@ import csv
 # Create variables
 
 total_months = []
-# average_profloss = ""
-# greatest_increase = ""
-# greatest_decrease = ""
-# increase_date = ""
-# decrease_date = ""
-
 
 # Create the path
 
