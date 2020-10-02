@@ -110,3 +110,27 @@ elif tooley_percent > 50:
     print("Winner: O'Tooley")
 
 print('--------------------')
+
+election_analysis = os.path.join("Analysis", "Election_Analysis.txt")
+
+with open(election_analysis, 'w') as writer:
+    print('Election Results', file=writer)
+    print('--------------------', file=writer)
+    print(f'Total Votes: {total_votes}', file=writer)
+    print('--------------------', file=writer)
+    print(f'Khan: {khan_percent}% ({khan_total})', file=writer)
+    print(f'Correy: {correy_percent}% ({correy_total})', file=writer)
+    print(f'Li: {li_percent}% ({li_total})',file=writer)
+    print(f"O'Tooley: {tooley_percent}% ({tooley_total})", file=writer)
+    print('--------------------', file=writer)
+
+    if khan_percent > 50:
+        print('Winner: Khan', file=writer)
+    elif correy_percent > 50:
+        print('Winner: Correy', file=writer)
+    elif li_percent > 50:
+        print('Winner: Li', file=writer)
+    elif tooley_percent > 50:
+        print("Winner: O'Tooley", file=writer)
+    
+    print('--------------------', file=writer)
