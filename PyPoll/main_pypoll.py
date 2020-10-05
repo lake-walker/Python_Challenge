@@ -19,59 +19,31 @@ with open(election_data, 'r') as csvfile:
     total_votes = len(list(reader))
     
 
-# Khan votes
+# Calculate the total number of votes per candidate
 with open(election_data, 'r') as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     next(reader)
     khan_votes = []
+    correy_votes = []
+    li_votes = []
+    tooley_votes = []
 
     for row in reader:
         if row[2] == 'Khan':
             khan_votes.append(row[0])
-    
-    khan_total = len(khan_votes)
-    
-
-# Correy votes
-with open(election_data, 'r') as csvfile:
-    reader = csv.reader(csvfile, delimiter = ',')
-    next(reader)
-    correy_votes = []
-
-    for row in reader:
-        if row[2] == 'Correy':
+        elif row[2] == 'Correy':
             correy_votes.append(row[0])
-    
-    correy_total = len(correy_votes)
-    
-
-# Li votes
-with open(election_data, 'r') as csvfile:
-    reader = csv.reader(csvfile, delimiter = ',')
-    next(reader)
-    li_votes = []
-
-    for row in reader:
-        if row[2] == 'Li':
+        elif row[2] == 'Li':
             li_votes.append(row[0])
-    
-    li_total = len(li_votes)
-    
-
-# O'Tooley votes
-with open(election_data, 'r') as csvfile:
-    reader = csv.reader(csvfile, delimiter = ',')
-    next(reader)
-    tooley_votes = []
-
-    for row in reader:
-        if row[2] == "O'Tooley":
+        elif row[2] == "O'Tooley":
             tooley_votes.append(row[0])
     
+    khan_total = len(khan_votes)
+    correy_total = len(correy_votes)
+    li_total = len(li_votes)
     tooley_total = len(tooley_votes)
-    
 
-# find percentages
+# find percentage of total vote for each candidate
 with open(election_data, 'r') as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     next(reader)
@@ -81,14 +53,7 @@ with open(election_data, 'r') as csvfile:
     li_percent = round((li_total / total_votes) * 100, 3)
     tooley_percent = round((tooley_total / total_votes) * 100, 3)
 
-
-
-    #print(khan_percent)
-    #print(correy_percent)
-    #print(li_percent)
-    #print(tooley_percent)
-
-#print statement 
+#print statement to terminal
 print('Election Results')
 print('--------------------')
 print(f'Total Votes: {total_votes}')
@@ -99,7 +64,7 @@ print(f'Li: {li_percent}% ({li_total})')
 print(f"O'Tooley: {tooley_percent}% ({tooley_total})")
 print('--------------------')
 
-
+# Determine the winner of the election
 if khan_percent > 50:
     print('Winner: Khan')
 elif correy_percent > 50:
@@ -110,6 +75,8 @@ elif tooley_percent > 50:
     print("Winner: O'Tooley")
 
 print('--------------------')
+
+#Export results to a text file
 
 election_analysis = os.path.join("Analysis", "Election_Analysis.txt")
 
